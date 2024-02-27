@@ -1,0 +1,13 @@
+config -> For managing configuration files, allows you to create a configuration file and access its values from anywhere in your application.
+
+gravatar -> A library for generating Gravatar URLs based on email addresses. Gravatar is a service for providing globally recognized avatars.
+
+bcryptjs -> A library to help hash/encrypt passwords securely before storing them in the database.
+
+jsonwebtoken -> A library for generating and verifying JSON Web Tokens (JWT). JWTs are used for authentication and authorization in web applications.
+
+request -> Deprecated library for making HTTP requests in Node.js. It has been deprecated in favor of other libraries like Axios or the built-in http module.
+
+nodemon -> a utility that monitors changes in your Node.js application and automatically restarts the server whenever a change is detected
+
+Concurrently -> allows you to run multiple commands concurrently in the same terminal window.
