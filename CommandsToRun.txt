@@ -1,8 +1,12 @@
-npm i express express-validator bcryptjs config gravatar jsonwebtoken mongoose request 
+>> npm i express express-validator bcryptjs config gravatar jsonwebtoken mongoose request 
 
-npm i -D nodemon concurrently
+>> npm i -D nodemon concurrently
 
 
-npm start -> starts normal server
-npm run server -> run nodemon on server.js(written in package.json)
+>> npm start -> starts normal server
+>> npm run server -> run nodemon on server.js(written in package.json)
 
+>> npm i axios react-router-dom redux react-redux redux-thunk redux-devtools-extension moment react-moment
+
+If normal install shows conflct in versions, use this
+>> npm install redux-devtools-extension --legacy-peer-deps
