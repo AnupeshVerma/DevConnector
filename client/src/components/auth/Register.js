@@ -1,47 +1,49 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types'
+import axios from 'axios';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
         confirmPassword: '',
     });
-    const { name, email, password, confirmPassword } = formData
+    const { name, email, password, confirmPassword } = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== confirmPassword) {
-            console.log('Passwords do not match')
-            alert("Passwords do not match");
+            console.log('Passwords do not match');
+            setAlert("Passwords do not match", 'danger');
             return;
-        }
-        else {
+        } else {
             const newUser = {
                 name,
                 email,
                 password
-            }
+            };
             try {
                 const config = {
                     headers: {
                         'Content-Type': 'application/json'
                     }
-                }
+                };
 
                 const body = JSON.stringify(newUser);
 
-                const res = await axios.post('/api/users', body, config)
+                const res = await axios.post('/api/users', body, config);
                 console.log(res.data);
             } catch (err) {
                 console.error(err.response.data);
             }
         }
-    }
+    };
 
     return (
         <Fragment>
@@ -65,9 +67,7 @@ const Register = () => {
                         value={email}
                         onChange={e => onChange(e)}
                         required />
-                    <small className="form-text"
-                    >This site uses Gravatar so if you want a profile image, use a
-                        Gravatar email</small>
+                    <small className="form-text">This site uses Gravatar so if you want a profile image, use a Gravatar email</small>
                 </div>
                 <div className="form-group">
                     <input
@@ -95,7 +95,11 @@ const Register = () => {
                 Already have an account? <Link to='/login'>Sign In</Link>
             </p>
         </Fragment>
-    )
+    );
+};
+
+Register.prototype = {
+    setAlert: PropTypes.func.isRequired
 }
 
-export default Register
+export default connect(null, { setAlert })(Register);
